@@ -12,12 +12,14 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "rootDir": "src",
+    "baseUrl": "src",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "esModuleInterop": true
   },
+  "include": ["src", "custom.d.ts"],
   "exclude": [
     "node_modules",
     "build",
