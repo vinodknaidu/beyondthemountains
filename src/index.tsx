@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import { BrowserRouter, Routes, Route } from 'react-router';
+import { Grid2 as Grid } from '@mui/material';
 
-import { initializeApp } from "firebase/app";
+import Home from 'pages/Home'
+import EndlessTimeline from 'pages/EndlessTimeline';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+import { initializeApp } from 'firebase/app';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Grid container direction={'column'} sx={{ height: '100%' }}>
+        <Grid>Header</Grid>
+        <Grid sx={{ flexGrow: '1' }}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/et' element={<EndlessTimeline />} />
+          </Routes>
+        </Grid>
+        <Grid>Footer</Grid>
+      </Grid>
+    </BrowserRouter>
   </React.StrictMode>
 );
-
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -22,4 +38,4 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_appId,
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
