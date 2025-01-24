@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Grid2 as Grid } from '@mui/material';
 
-import Home from 'pages/Home'
+import './index.css';
+import Home from 'pages/Home';
 import EndlessTimeline from 'pages/EndlessTimeline';
+import Header from 'components/Header';
 
 import { initializeApp } from 'firebase/app';
 
@@ -16,14 +21,15 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Grid container direction={'column'} sx={{ height: '100%' }}>
-        <Grid>Header</Grid>
+        <Grid sx={{ '& .MuiPaper-root': { position: 'static' } }}>
+          <Header />
+        </Grid>
         <Grid sx={{ flexGrow: '1' }}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/et' element={<EndlessTimeline />} />
           </Routes>
         </Grid>
-        <Grid>Footer</Grid>
       </Grid>
     </BrowserRouter>
   </React.StrictMode>
