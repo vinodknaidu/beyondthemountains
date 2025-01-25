@@ -22,23 +22,21 @@ const App: React.FC = () => {
   const user = useAuth();
 
   return (
-    <BrowserRouter>
-      <Grid container direction={'column'} sx={{ height: '100%' }}>
-        <Grid sx={{ '& .MuiPaper-root': { position: 'static' } }}>
-          <Header />
-        </Grid>
-        <Grid sx={{ flexGrow: '1' }}>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route
-              path='/et'
-              element={user ? <EndlessTimeline /> : <Navigate to='/login' />}
-            />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-        </Grid>
+    <Grid container direction={'column'} sx={{ height: '100%' }}>
+      <Grid sx={{ '& .MuiPaper-root': { position: 'static' } }}>
+        <Header />
       </Grid>
-    </BrowserRouter>
+      <Grid sx={{ flexGrow: '1' }}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route
+            path='/et'
+            element={user ? <EndlessTimeline /> : <Navigate to='/login' />}
+          />
+          <Route path='/login' element={<Login />} />
+        </Routes>
+      </Grid>
+    </Grid>
   );
 };
 
@@ -48,7 +46,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
