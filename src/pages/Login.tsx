@@ -1,28 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router';
 import { Button, TextField } from '@mui/material';
 import { createUseStyles } from 'react-jss';
+import { useAuth } from 'hooks/useAuth';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const classes = useStyles();
 
-  function handleOnSubmit(event: React.SyntheticEvent) {
+  const user = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/et');
+    }
+  }, [user]);
+
+  async function handleOnSubmit(event: React.SyntheticEvent) {
+    event.preventDefault();
     const target = event.target as typeof event.target & {
-      phno: { value: string };
-      pswd: { value: string };
+      email: { value: string };
+      password: { value: string };
     };
-    alert(target.phno + ' ' + target.pswd);
+    await signInWithEmailAndPassword(
+      getAuth(),
+      target.email.value,
+      target.password.value
+    );
   }
 
   return (
     <form onSubmit={handleOnSubmit} className={classes.form}>
-      <TextField label='Phone number' required name='phno' />
+      <TextField label='email' required name='email' />
       <TextField
         label='Authentication code'
         required
         type='password'
-        name='pswd'
+        name='password'
       />
-      <Button type='submit' variant='contained'>Login</Button>
+      <Button type='submit' variant='contained'>
+        Login
+      </Button>
     </form>
   );
 };
