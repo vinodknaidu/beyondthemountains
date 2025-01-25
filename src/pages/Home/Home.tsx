@@ -1,7 +1,18 @@
-import React from "react";
+import React from 'react';
 
 const Home: React.FC = () => {
-    return <div>Home</div>
-}
+  return (
+    <div
+      style={{
+        display: 'flex',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      ❤️Shalini❤️
+    </div>
+  );
+};
 
 export default Home;
