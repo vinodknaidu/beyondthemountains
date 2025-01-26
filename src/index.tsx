@@ -22,11 +22,11 @@ const App: React.FC = () => {
   const user = useAuth();
 
   return (
-    <Grid container direction={'column'} sx={{ height: '100%' }}>
+    <Grid container direction={'column'} sx={{ minHeight: '100%' }}>
       <Grid sx={{ '& .MuiPaper-root': { position: 'static' } }}>
         <Header />
       </Grid>
-      <Grid sx={{ flexGrow: '1' }}>
+      <Grid sx={{ flexGrow: '1', height: 0, overflow: 'auto' }}>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route
