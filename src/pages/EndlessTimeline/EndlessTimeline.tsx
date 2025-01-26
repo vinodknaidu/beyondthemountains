@@ -30,7 +30,7 @@ const EndlessTimeline: React.FC = () => {
   }, []);
 
   return (
-    <Timeline position='alternate'>
+    <Timeline>
       {memories ? (
         memories.map((memory) => (
           <TimelineSlot

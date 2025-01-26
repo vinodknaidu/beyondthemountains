@@ -9,10 +9,11 @@ import {
 } from '@mui/lab';
 
 import BasicCard, { BasicCardProps } from './BasicCard';
+import { SxProps, Theme } from '@mui/material';
 
 const TimelineSlot: React.FC<TimelineSlotProps> = (props) => {
   return (
-    <TimelineItem>
+    <TimelineItem sx={props.sx}>
       <TimelineOppositeContent
         variant='body2'
         align='right'
@@ -25,8 +26,8 @@ const TimelineSlot: React.FC<TimelineSlotProps> = (props) => {
         <TimelineDot />
         <TimelineConnector />
       </TimelineSeparator>
-      <TimelineContent>
-        <BasicCard {...props} />
+      <TimelineContent sx={{ py: '12px', px: 2 }}>
+        <BasicCard {...props} sx={{ width: '300px' }} />
       </TimelineContent>
     </TimelineItem>
   );
@@ -34,6 +35,7 @@ const TimelineSlot: React.FC<TimelineSlotProps> = (props) => {
 
 interface TimelineSlotProps extends BasicCardProps {
   date: string;
+  sx?: SxProps<Theme>;
 }
 
 export default TimelineSlot;

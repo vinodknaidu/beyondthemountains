@@ -1,12 +1,20 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  SxProps,
+  Theme,
+} from '@mui/material';
 
 const BasicCard: React.FC<BasicCardProps> = (props) => {
   return (
-    <Card>
+    <Card sx={props.sx}>
       <CardMedia image={props.imgSrc} sx={{ height: props.imgHeight || 175 }} />
       <CardContent>
         <Typography variant='h5'>{props.header}</Typography>
+        <Typography variant='body2'>{props.desc}</Typography>
       </CardContent>
     </Card>
   );
@@ -17,6 +25,7 @@ export interface BasicCardProps {
   header: string;
   desc?: string;
   imgHeight?: number;
+  sx?: SxProps<Theme>;
 }
 
 export default BasicCard;
