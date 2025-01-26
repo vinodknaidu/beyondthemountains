@@ -6,13 +6,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 const Header: React.FC = () => {
+  const getTextVariant = () => {
+    if (window.innerWidth > 500) {
+      return 'h5';
+    }
+    return 'body2';
+  };
   return (
     <AppBar>
       <Toolbar>
         {/* <IconButton edge='start' size='large' color='inherit'>
           <MenuIcon />
         </IconButton> */}
-        <Typography variant='h5'>Beyond The Mountains</Typography>
+        <Typography variant={getTextVariant()}>Beyond The Mountains</Typography>
       </Toolbar>
     </AppBar>
   );
